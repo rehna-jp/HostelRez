@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>All Bookings</h1>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Room Type</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="booking-list"></tbody>
+        </table>
+    </main>
+    <script>
+        fetch("bookings.json")
+            .then(response => response.json())
+            .then(bookings => {
+                const tableBody = document.getElementById("booking-list");
+                bookings.forEach(booking => {
+                    const row = `<tr>
+                        <td>${booking.name}</td>
+                        <td>${booking.email}</td>
+                        <td>${booking.roomType}</td>
+                        <td>${booking.price}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            });
+    </script>
+</body>
+</html>

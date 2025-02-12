@@ -1,0 +1,17 @@
+[
+    {
+        "id": "single1",
+        "roomType": "Single Room",
+        "price": "$500 per month"
+    },
+    {
+        "id": "double1",
+        "roomType": "Double Room",
+        "price": "$700 per month"
+    },
+    {
+        "id": "shared1",
+        "roomType": "Shared Room",
+        "price": "$300 per month"
+    }
+]
