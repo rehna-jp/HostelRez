@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Frank+Ruhl+Libre:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-        </style>
+    </style>
 </head>
 <body>
     <header>
@@ -15,49 +15,40 @@
     </header>
     <main>
         <!-- Introductory Section -->
-     <section class="intro">
-    <h1>Welcome to Our Hostel</h1>
-    <p>
-        At our hostel, we believe that every student deserves a comfortable and supportive living environment. 
-        Our facility is designed with your needs in mind, providing a safe and friendly atmosphere where you can thrive academically and socially.
-        Located conveniently near local universities and public transport, our hostel offers easy access to everything you need. Explore nearby cafes, libraries, and parks, or take advantage of the cultural events happening in the city. 
-    </p>
-    <p>
-        Join us at our hostel, where you can create lasting memories, build friendships, and focus on your academic journey. We look forward to welcoming you to our community!
-    </p>
+        <section class="intro">
+            <h1>Welcome to Our Hostel</h1>
+            <p>
+                At our hostel, we believe that every student deserves a comfortable and supportive living environment. 
+                Our facility is designed with your needs in mind, providing a safe and friendly atmosphere where you can thrive academically and socially.
+            </p>
+            <p>
+                Join us at our hostel, where you can create lasting memories, build friendships, and focus on your academic journey. We look forward to welcoming you to our community!
+            </p>
+        </section>
 
-     
+        <img src="./images/hostel1.jpg" alt="Hostel Image">
 
-</section>
-
-  <img src="./images/hostel1.jpg">
-
+        <!-- Gallery Section -->
         <section class="gallery">
             <h1>Our Rooms</h1>
             <p>
-                We offer a variety of room types to suit your preferences and budget. Whether you choose a cozy single room for privacy, a spacious double room for sharing with a friend, or a budget-friendly shared room to meet new people, we have the perfect accommodation for you.
-                Our hostel is equipped with modern amenities to enhance your living experience. Enjoy high-speed internet access, allowing you to stay connected with your studies and friends. Our study areas are designed for productivity, providing a quiet space for you to focus on your coursework.
+                We offer a variety of room types to suit your preferences and budget. Choose from single, double, or shared rooms.
             </p>
             <div class="gallery-images">
                 <p>Single Bed</p>
                 <div class="image-container">
-                    
-                    <img src="images/singlebed1.jpg" alt="Single Bed" onclick="">
+                    <img src="images/singlebed1.jpg" alt="Single Bed">
                     <img src="images/singlebed2.jpg" alt="Single Bed">
                     <img src="images/singlebed3.jpg" alt="Single Bed">
-                    
                 </div>
                 <p>Double Bed</p>
                 <div class="image-container">
-                    
-                    <img src="images/doublebed.jpg" alt="Double bed">
-                    <img src="images/doublebed3.jpg" alt="Double bed">
-                    <img src="images/doublebed2.jpg" alt="Double bed">
-                    
+                    <img src="images/doublebed.jpg" alt="Double Bed">
+                    <img src="images/doublebed2.jpg" alt="Double Bed">
+                    <img src="images/doublebed3.jpg" alt="Double Bed">
                 </div>
                 <p>Shared Room</p>
                 <div class="image-container">
-                    
                     <img src="images/sharedroom1.jpg" alt="Shared Room">
                     <img src="images/sharedroom2.jpg" alt="Shared Room">
                     <img src="images/sharedroom3.jpg" alt="Shared Room">
@@ -65,83 +56,30 @@
             </div>
         </section>
 
-        <section class="reservation-form">
-            <!-- <h2>Book Your Room</h2>
-            <form id="bookingForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
+        <!-- Reservation Modal -->
+        <div id="reservation-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Book Your Room</h2>
+                <form id="bookingForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
 
-                <label for="duration">Duration:</label>
-                <select id="duration" required>
-                    <option value="month">1 Month</option>
-                    <option value="semester">Semester</option>
-                    <option value="year">1 Year</option>
-                </select>
+                    <label for="roomType">Room Type:</label>
+                    <input type="text" id="roomType" readonly>
 
-                <label for="roomType">Room Type:</label>
-                <select id="roomType" required>
-                    <option value="single">Single Room</option>
-                    <option value="double">Double Room</option>
-                    <option value="shared">Shared Room</option>
-                </select>
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" readonly>
 
-                <button type="submit">Book Now</button>
-            </form>
-            <div id="confirmationMessage">
-                
-            </div> -->
-             <!-- Reservation Form (Hidden Initially) -->
-<div id="reservation-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Book Your Room</h2>
-        <form id="bookingForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-
-            <label for="roomType">Room Type:</label>
-            <input type="text" id="roomType" readonly>
-
-            <label for="price">Price:</label>
-            <input type="text" id="price" readonly>
-
-            <button type="submit">Book Now</button>
-        </form>
-    </div>
-</div>
-        </section>
-        
-        <!-- Reservation Form (Hidden Initially) -->
-<!-- <div id="reservation-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Book Your Room</h2>
-        <form id="bookingForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" required>
-
-            <label for="roomType">Room Type:</label>
-            <input type="text" id="roomType" readonly>
-
-            <label for="price">Price:</label>
-            <input type="text" id="price" readonly>
-
-            <button type="submit">Book Now</button>
-        </form>
-    </div>
-</div> -->
-
-        
+                    <button type="submit">Book Now</button>
+                </form>
+            </div>
+        </div>
     </main>
+
     <footer>
         <p>&copy; 2023 Hostel Reservation System</p>
     </footer>
