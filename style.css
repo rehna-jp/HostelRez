@@ -1,153 +1,94 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: "Tinos", serif;
     background-color: #f4f4f4;
     color: #333;
-    /* margin: 0;
-    padding: 0; */
 }
 
 header {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     color: white;
     padding: 10px 14px;
     text-align: left;
-    
-    
 }
 
 main {
     padding: 20px;
-    
 }
 
 .intro {
-    background-color: #e8f5e9; /* Light green background */
+    background-color: #e8f5e9;
     padding: 5rem;
     border-radius: 5px;
-    margin-bottom: 40px; /* Space between sections */
+    margin-bottom: 40px;
 }
 
 .intro h1 {
-    color: #4CAF50; /* Green */
+    color: #4CAF50;
     text-align: center;
     font-size: 2.5rem;
 }
 
 .intro p {
     text-align: center;
-    line-height: 1.6; /* Improve readability */
+    line-height: 1.6;
     margin: 10px 0;
 }
 
-img{
+img {
     margin-top: 3rem;
     width: 100%;
-    height: 10%;
+    height: auto;
 }
 
-
-/* Gallery Section */
 .gallery {
     margin-top: 40px;
     background-color: #e8f5e9;
     padding: 2rem;
 }
-.galleryp{
-    text-align: center;
-    line-height: 1.6; /* Improve readability */
-    margin: 10px 0;
-}
 
 .gallery h1 {
     text-align: center;
-    color: #4CAF50; /* Green */
+    color: #4CAF50;
     font-size: 2rem;
 }
 
 .gallery-images {
     display: flex;
-    flex-direction: column;   
-    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    flex-direction: column;
 }
 
-
-.gallery-images p{
+.gallery-images p {
     text-align: center;
     font-size: 1.2rem;
     margin-top: 2rem;
 }
 
 .image-container {
-    /* margin: 10px; */
-    /* margin-top: 2rem; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     padding-left: 5rem;
-    /* gap: 20px; */
-    /* flex: 1 1 30%; Flex-grow, flex-shrink, flex-basis */
 }
 
 .image-container img {
     width: 17rem;
-    height:17rem; /* Maintain aspect ratio */
+    height: 17rem;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 .image-container img:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out;
- }
-
-.reservation-form {
-    display: none;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px; /* Limit the width of the form */
-    margin: auto; /* Center the form */
-    margin-top: 3rem;
 }
 
-h2 {
-    color: #4CAF50; /* Green */
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-input, select {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #4CAF50; /* Green */
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-   
-}
-
-button:hover {
-    background-color: #45a049; /* Darker green */
-}
-
-/* Hide modal by default */
 .modal {
     display: none;
     position: fixed;
@@ -161,7 +102,6 @@ button:hover {
     width: 300px;
 }
 
-/* Close button */
 .close-btn {
     float: right;
     cursor: pointer;
@@ -169,55 +109,12 @@ button:hover {
     font-weight: bold;
 }
 
-.modal-content {
-    text-align: left;
-}
-
-
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     color: white;
     position: relative;
     bottom: 0;
     width: 100%;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    header {
-        font-size: 1.5em; /* Adjust header font size for smaller screens */
-    }
-
-    .reservation-form {
-        padding: 15px; /* Reduce padding on smaller screens */
-    }
-
-    button {
-        padding: 8px; /* Reduce button padding */
-    }
-
-    .gallery-images {
-        flex-direction: column; /* Stack images vertically on smaller screens */
-        align-items: center; /* Center images */
-    }
-
-    .image-container {
-        flex: 1 1 80%; /* Make images larger on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    h2 {
-        font-size: 1.2em; /* Smaller heading for mobile */
-    }
-
-    input, select {
-        padding: 8px; /* Reduce input padding */
-    }
-
-    button {
-        width: 100%; /* Make button full width */
-    }
 }

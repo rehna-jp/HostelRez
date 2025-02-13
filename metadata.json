@@ -1,17 +1,17 @@
 [
     {
-        "id": "single1",
-        "roomType": "Single Room",
-        "price": "$500 per month"
+        "id": "singlebed",
+        "roomType": "Single Bed",
+        "price": "$100/month"
     },
     {
-        "id": "double1",
-        "roomType": "Double Room",
-        "price": "$700 per month"
+        "id": "doublebed",
+        "roomType": "Double Bed",
+        "price": "$150/month"
     },
     {
-        "id": "shared1",
+        "id": "sharedroom",
         "roomType": "Shared Room",
-        "price": "$300 per month"
+        "price": "$50/month"
     }
 ]
