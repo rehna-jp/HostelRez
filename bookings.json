@@ -1,0 +1,14 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "roomType": "Single Bed",
+        "price": "$100/month"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "roomType": "Double Bed",
+        "price": "$150/month"
+    }
+]

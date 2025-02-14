@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         img.addEventListener("click", function () {
             const roomId = this.getAttribute("alt").replace(/\s+/g, "").toLowerCase();
             const room = roomMetadata.find(r => r.id === roomId);
-
             if (room) {
                 document.getElementById("roomType").value = room.roomType;
                 document.getElementById("price").value = room.price;
@@ -30,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle booking submission
     document.getElementById("bookingForm").addEventListener("submit", function (event) {
         event.preventDefault();
+
+        // Collect booking data
         const booking = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
@@ -37,12 +38,20 @@ document.addEventListener("DOMContentLoaded", function () {
             price: document.getElementById("price").value
         };
 
-        // Save booking data in a JSON file (simulated)
-        fetch("bookings.json", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(booking)
-        })
+        // Fetch existing bookings from bookings.json
+        fetch("bookings.json")
+            .then(response => response.json())
+            .then(existingBookings => {
+                // Append new booking to existing bookings
+                existingBookings.push(booking);
+
+                // Save updated bookings back to bookings.json
+                return fetch("bookings.json", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(existingBookings)
+                });
+            })
             .then(() => {
                 alert("Booking Confirmed!");
                 modal.style.display = "none";
