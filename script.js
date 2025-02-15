@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // When image is clicked, show form with metadata
     images.forEach(img => {
         img.addEventListener("click", function () {
-            const roomId = this.getAttribute("alt").replace(/\s+/g, "").toLowerCase();
+            const roomId = this.getAttribute("alt").toLowerCase().replace(/\s+/g, "");
             const room = roomMetadata.find(r => r.id === roomId);
             if (room) {
                 document.getElementById("roomType").value = room.roomType;
