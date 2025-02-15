@@ -155,9 +155,16 @@ button {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 1rem;
-   
 }
 
 button:hover {
     background-color: #45a049; /* Darker green */
+}
+
+td, th, table {
+    border: 1px solid black;
+}
+
+a {
+    text-decoration: none;
 }

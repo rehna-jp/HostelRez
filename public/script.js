@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // When image is clicked, show form with metadata
     images.forEach(img => {
         img.addEventListener("click", function () {
-            const roomId = this.getAttribute("alt").replace(/\s+/g, "").toLowerCase();
+            const roomId = this.getAttribute("alt").toLowerCase().replace(/\s+/g, "");
             const room = roomMetadata.find(r => r.id === roomId);
             if (room) {
                 document.getElementById("roomType").value = room.roomType;
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Handle booking submission
     document.getElementById("bookingForm").addEventListener("submit", function (event) {
         event.preventDefault();
-
+    
         // Collect booking data
         const booking = {
             name: document.getElementById("name").value,
@@ -37,25 +37,32 @@ document.addEventListener("DOMContentLoaded", function () {
             roomType: document.getElementById("roomType").value,
             price: document.getElementById("price").value
         };
-
+    
         // Fetch existing bookings from bookings.json
         fetch("bookings.json")
             .then(response => response.json())
             .then(existingBookings => {
                 // Append new booking to existing bookings
                 existingBookings.push(booking);
-
-                // Save updated bookings back to bookings.json
-                return fetch("bookings.json", {
+    
+                // Send updated bookings to the server
+                return fetch("/update-bookings", {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(existingBookings)
                 });
             })
-            .then(() => {
-                alert("Booking Confirmed!");
-                modal.style.display = "none";
+            .then(response => {
+                if (response.ok) {
+                    alert("Booking Confirmed!");
+                    modal.style.display = "none";
+                } else {
+                    throw new Error("Failed to update bookings");
+                }
             })
-            .catch(error => console.error("Error saving booking:", error));
+            .catch(error => {
+                console.error("Error saving booking:", error);
+                alert("Failed to save booking. Please try again.");
+            });
     });
 });
