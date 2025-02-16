@@ -2,7 +2,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("reservation-modal");
     const closeModal = document.querySelector(".close-btn");
     const images = document.querySelectorAll(".image-container img");
+    const confirmationPopover = document.getElementById("confirmation-popover");
+    const popoverOverlay = document.getElementById("popover-overlay");
+    const popoverCloseBtn = document.querySelector(".popover-close-btn");
     let roomMetadata = [];
+
+    function showPopover() {
+        confirmationPopover.style.display = "block";
+        popoverOverlay.style.display = "block";
+    }
+
+    function hidePopover() {
+    confirmationPopover.style.display = "none";
+    popoverOverlay.style.display = "none";
+    }
+
+    popoverCloseBtn.addEventListener("click", hidePopover);
+
+    popoverOverlay.addEventListener("click", hidePopover);
 
     // Load room metadata from JSON
     fetch("metadata.json")
@@ -54,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(response => {
                 if (response.ok) {
-                    alert("Booking Confirmed!");
+                    showPopover();
                     modal.style.display = "none";
                 } else {
                     throw new Error("Failed to update bookings");
