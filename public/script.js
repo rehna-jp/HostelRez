@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         confirmationPopover.style.display = "block";
         popoverOverlay.style.display = "block";
         // Auto-hide after 3 seconds
-        setTimeout(hidePopover, 3000);
+        setTimeout(hidePopover, 5000);
     }
 
     function hidePopover() {
