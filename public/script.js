@@ -52,7 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
         img.addEventListener("click", function () {
             // Extract room type from the alt text (e.g., "Single Bed Room 1" -> "Single Bed")
             const altText = this.getAttribute("alt");
-            const roomType = altText.split(" Room")[0];
+            // Remove the room number and "Room" text
+            const roomType = altText.replace(/ Room \d+$/, "");
+            
+            console.log("Looking for room type:", roomType); // Debug log
             
             // Find the corresponding room in metadata
             const room = roomMetadata.find(r => r.roomType === roomType);
@@ -63,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 showModal();
             } else {
                 console.error("Room metadata not found for:", roomType);
+                console.log("Available room types:", roomMetadata.map(r => r.roomType)); // Debug log
                 alert("Sorry, room information is not available at the moment.");
             }
         });
