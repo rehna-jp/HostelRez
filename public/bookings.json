@@ -1,14 +1,1 @@
-[
-    {
-        "name": "John Doe",
-        "email": "john.doe@example.com",
-        "roomType": "Single Bed",
-        "price": "$100/month"
-    },
-    {
-        "name": "Jane Smith",
-        "email": "jane.smith@example.com",
-        "roomType": "Double Bed",
-        "price": "$150/month"
-    }
-]
+[{"name":"Pres","email":"Emaild@paren.com","roomType":"Double Bed","price":"$150/month","bookingDate":"2025-03-18T04:59:00.220Z"}]
