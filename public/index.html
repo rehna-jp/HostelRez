@@ -3,56 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Reservation System</title>
+    <title>HostelRez - Modern Student Accommodation</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Frank+Ruhl+Libre:wght@300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sorts+Mill+Goudy:ital@0;1&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
     </style>
 </head>
 <body>
     <header>
-        <h1>HostelRez</h1>
-        <div class="booking"><a href="bookings.html">Bookings</a></div>
+        <h1><i class="fas fa-home"></i> HostelRez</h1>
+        <div class="booking">
+            <a href="bookings.html"><i class="fas fa-calendar-check"></i> View Bookings</a>
+        </div>
     </header>
     <main>
         <!-- Introductory Section -->
         <section class="intro">
-            <h1>Welcome to Our Hostel</h1>
+            <h1>Welcome to Our Modern Student Hostel</h1>
             <p>
-                At our hostel, we believe that every student deserves a comfortable and supportive living environment. 
+                At HostelRez, we believe that every student deserves a comfortable and supportive living environment. 
                 Our facility is designed with your needs in mind, providing a safe and friendly atmosphere where you can thrive academically and socially.
             </p>
             <p>
-                Join us at our hostel, where you can create lasting memories, build friendships, and focus on your academic journey. We look forward to welcoming you to our community!
+                Join our community of students and experience the perfect blend of comfort, convenience, and camaraderie. 
+                We look forward to welcoming you to your new home away from home!
             </p>
         </section>
 
-        <img src="./images/hostel.jpg" alt="Hostel Image">
+        <img src="./images/hostel.jpg" alt="Modern Hostel Building" loading="lazy">
 
         <!-- Gallery Section -->
         <section class="gallery">
-            <h1>Our Rooms</h1>
+            <h1>Explore Our Room Options</h1>
             <p>
-                We offer a variety of room types to suit your preferences and budget. Choose from single, double, or shared rooms.
+                Choose from our carefully designed room types, each crafted to provide the perfect balance of comfort and functionality.
             </p>
             <div class="gallery-images">
-                <p>Single Bed</p>
+                <p><i class="fas fa-bed"></i> Single Bed Rooms</p>
                 <div class="image-container">
-                    <img src="images/singlebed1.jpg" alt="Single Bed">
-                    <img src="images/singlebed2.jpg" alt="Single Bed">
-                    <img src="images/singlebed3.jpg" alt="Single Bed">
+                    <img src="images/singlebed1.jpg" alt="Single Bed Room 1" loading="lazy">
+                    <img src="images/singlebed2.jpg" alt="Single Bed Room 2" loading="lazy">
+                    <img src="images/singlebed3.jpg" alt="Single Bed Room 3" loading="lazy">
                 </div>
-                <p>Double Bed</p>
+                <p><i class="fas fa-bed"></i> Double Bed Rooms</p>
                 <div class="image-container">
-                    <img src="images/doublebed.jpg" alt="Double Bed">
-                    <img src="images/doublebed2.jpg" alt="Double Bed">
-                    <img src="images/doublebed3.jpg" alt="Double Bed">
+                    <img src="images/doublebed.jpg" alt="Double Bed Room 1" loading="lazy">
+                    <img src="images/doublebed2.jpg" alt="Double Bed Room 2" loading="lazy">
+                    <img src="images/doublebed3.jpg" alt="Double Bed Room 3" loading="lazy">
                 </div>
-                <p>Shared Room</p>
+                <p><i class="fas fa-users"></i> Shared Rooms</p>
                 <div class="image-container">
-                    <img src="images/sharedroom1.jpg" alt="Shared Room">
-                    <img src="images/sharedroom2.jpg" alt="Shared Room">
-                    <img src="images/sharedroom3.jpg" alt="Shared Room">
+                    <img src="images/sharedroom1.jpg" alt="Shared Room" loading="lazy">
+                    <img src="images/sharedroom2.jpg" alt="Shared Room" loading="lazy">
+                    <img src="images/sharedroom3.jpg" alt="Shared Room" loading="lazy">
                 </div>
             </div>
         </section>
@@ -61,13 +65,13 @@
         <div id="reservation-modal" class="modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
-                <h2>Book Your Room</h2>
+                <h2><i class="fas fa-calendar-plus"></i> Book Your Room</h2>
                 <form id="bookingForm">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" required>
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" required placeholder="Enter your full name">
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" required>
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
 
                     <label for="roomType">Room Type:</label>
                     <input type="text" id="roomType" readonly>
@@ -75,24 +79,23 @@
                     <label for="price">Price:</label>
                     <input type="text" id="price" readonly>
 
-                    <button type="submit">Book Now</button>
+                    <button type="submit">
+                        <i class="fas fa-check"></i> Confirm Booking
+                    </button>
                 </form>
             </div>
         </div>
     </main>
 
-    <div id="confirm" class="modal">
-
-    </div>
-
     <footer>
-        <p>&copy; 2023 Hostel Reservation System</p>
+        <p>&copy; 2024 HostelRez - Modern Student Accommodation</p>
     </footer>
+
     <div id="confirmation-popover" class="popover">
         <div class="popover-content">
             <span class="popover-close-btn">&times;</span>
-            <h3>Booking Confirmed!</h3>
-            <p>Your room has been successfully booked.</p>
+            <h3><i class="fas fa-check-circle"></i> Booking Confirmed!</h3>
+            <p>Your room has been successfully booked. We'll send you a confirmation email shortly.</p>
         </div>
     </div>
     <div id="popover-overlay" class="popover-overlay"></div>

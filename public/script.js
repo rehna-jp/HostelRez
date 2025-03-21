@@ -10,38 +10,77 @@ document.addEventListener("DOMContentLoaded", function () {
     function showPopover() {
         confirmationPopover.style.display = "block";
         popoverOverlay.style.display = "block";
+        // Auto-hide after 3 seconds
+        setTimeout(hidePopover, 5000);
     }
 
     function hidePopover() {
-    confirmationPopover.style.display = "none";
-    popoverOverlay.style.display = "none";
+        confirmationPopover.style.display = "none";
+        popoverOverlay.style.display = "none";
+    }
+
+    function showModal() {
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+    }
+
+    function hideModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = ""; // Restore scrolling
     }
 
     popoverCloseBtn.addEventListener("click", hidePopover);
-
     popoverOverlay.addEventListener("click", hidePopover);
 
     // Load room metadata from JSON
     fetch("metadata.json")
-        .then(response => response.json())
-        .then(data => roomMetadata = data)
-        .catch(error => console.error("Error loading metadata:", error));
+        .then(response => {
+            if (!response.ok) throw new Error("Failed to load room metadata");
+            return response.json();
+        })
+        .then(data => {
+            roomMetadata = data;
+            console.log("Room metadata loaded successfully");
+        })
+        .catch(error => {
+            console.error("Error loading metadata:", error);
+            alert("Failed to load room information. Please refresh the page.");
+        });
 
     // When image is clicked, show form with metadata
     images.forEach(img => {
         img.addEventListener("click", function () {
-            const roomId = this.getAttribute("alt").toLowerCase().replace(/\s+/g, "");
-            const room = roomMetadata.find(r => r.id === roomId);
+            // Extract room type from the alt text (e.g., "Single Bed Room 1" -> "Single Bed")
+            const altText = this.getAttribute("alt");
+            // Remove the room number and "Room" text
+            const roomType = altText.replace(/ Room \d+$/, "");
+            
+            console.log("Looking for room type:", roomType); // Debug log
+            
+            // Find the corresponding room in metadata
+            const room = roomMetadata.find(r => r.roomType === roomType);
+            
             if (room) {
                 document.getElementById("roomType").value = room.roomType;
                 document.getElementById("price").value = room.price;
-                modal.style.display = "block";
+                showModal();
+            } else {
+                console.error("Room metadata not found for:", roomType);
+                console.log("Available room types:", roomMetadata.map(r => r.roomType)); // Debug log
+                alert("Sorry, room information is not available at the moment.");
             }
         });
     });
 
     // Close modal
-    closeModal.addEventListener("click", () => modal.style.display = "none");
+    closeModal.addEventListener("click", hideModal);
+
+    // Close modal when clicking outside
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            hideModal();
+        }
+    });
 
     // Handle booking submission
     document.getElementById("bookingForm").addEventListener("submit", function (event) {
@@ -49,15 +88,32 @@ document.addEventListener("DOMContentLoaded", function () {
     
         // Collect booking data
         const booking = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
+            name: document.getElementById("name").value.trim(),
+            email: document.getElementById("email").value.trim(),
             roomType: document.getElementById("roomType").value,
-            price: document.getElementById("price").value
+            price: document.getElementById("price").value,
+            bookingDate: new Date().toISOString()
         };
+    
+        // Basic validation
+        if (!booking.name || !booking.email) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+    
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(booking.email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
     
         // Fetch existing bookings from bookings.json
         fetch("bookings.json")
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to fetch existing bookings");
+                return response.json();
+            })
             .then(existingBookings => {
                 // Append new booking to existing bookings
                 existingBookings.push(booking);
@@ -65,21 +121,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Send updated bookings to the server
                 return fetch("/update-bookings", {
                     method: "PUT",
-                    headers: { "Content-Type": "application/json" },
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
                     body: JSON.stringify(existingBookings)
                 });
             })
             .then(response => {
-                if (response.ok) {
-                    showPopover();
-                    modal.style.display = "none";
-                } else {
-                    throw new Error("Failed to update bookings");
-                }
+                if (!response.ok) throw new Error("Failed to update bookings");
+                return response.text();
+            })
+            .then(() => {
+                showPopover();
+                hideModal();
+                // Reset form
+                document.getElementById("bookingForm").reset();
             })
             .catch(error => {
                 console.error("Error saving booking:", error);
                 alert("Failed to save booking. Please try again.");
             });
+    });
+
+    // Add keyboard support for closing modal
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            hideModal();
+            hidePopover();
+        }
     });
 });
